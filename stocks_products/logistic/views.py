@@ -1,3 +1,4 @@
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
 from logistic.models import Product, Stock
 from logistic.serializers import ProductSerializer, StockSerializer
@@ -13,3 +14,8 @@ class StockViewSet(ModelViewSet):
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset
+
+class WarehouseListView(ListAPIView):
+    queryset = Warehouse.objects.all()
+    serializer_class = WarehouseSerializer
+    pagination_class = PageNumberPagination
