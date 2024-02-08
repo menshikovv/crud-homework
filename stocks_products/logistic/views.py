@@ -14,8 +14,3 @@ class StockViewSet(ModelViewSet):
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset
-
-class WarehouseListView(ListAPIView):
-    queryset = Warehouse.objects.all()
-    serializer_class = WarehouseSerializer
-    pagination_class = PageNumberPagination
