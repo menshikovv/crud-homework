@@ -1,10 +1,13 @@
 from rest_framework import serializers
+from rest_framework.filters import SearchFilter
 from .models import Product, Stock, StockProduct
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'title', 'description']
+        filter_backends = [SearchFilter]
+        search_fields = ['title', 'description']
 
 class ProductPositionSerializer(serializers.ModelSerializer):
     class Meta:
